@@ -1,0 +1,83 @@
+name: flutter_gru_chang_thai
+description: "A new Flutter project."
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  logger: ^2.0.2+1
+  catcher: ^0.8.0
+  loader_overlay: ^3.0.0
+  loading_animation_widget: ^1.2.0+4
+  responsive_framework: ^1.1.1
+  easy_localization: ^3.0.3
+  simple_gradient_text: ^1.3.0
+  dropdown_button2: ^2.3.9
+  gradient_borders: ^1.0.0
+  photo_view: ^0.14.0
+  smooth_page_indicator: ^1.1.0
+  bottom_sheet: ^4.0.0
+  get: ^4.6.6
+  package_info_plus: 4.2.0
+  scroll_to_index: ^3.0.1
+  sticky_headers: ^0.3.0+2
+  flutter_bloc: ^8.1.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.2
+
+flutter:
+
+  uses-material-design: true
+
+  fonts:
+    - family: Cloud
+      fonts:
+        - asset: assets/fonts/cloud/Cloud-Light.otf
+        - asset: assets/fonts/cloud/Cloud-Bold.otf
+          weight: 500
+
+  assets:
+    - assets/images/
+    - assets/languages/
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

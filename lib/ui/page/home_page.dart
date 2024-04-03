@@ -1,21 +1,25 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gru_chang_thai/app/app_resource.dart';
-import 'package:flutter_gru_chang_thai/ui/common_layout.dart';
-import 'package:flutter_gru_chang_thai/ui/router.dart';
+import 'package:flutter_gru_chang_thai/shared/theme.dart';
+import 'package:flutter_gru_chang_thai/ui/widget/fade_animation_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/gold_gradient_box_item_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/banner_home_widget.dart';
+import 'package:flutter_gru_chang_thai/ui/widget/gold_gradient_text_widget.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> {
+  AutoScrollController scrollController = AutoScrollController();
+
   List<Widget> listWidgets = const [
     GoldGradientBoxItemWidget(),
     GoldGradientBoxItemWidget(),
@@ -32,16 +36,34 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return CommonLayout(
-          isShowBodyByScroll: true,
-          menuRouteSelect: RoutePaths.homePage,
-          header: (scrollController) => BannerHomeWidget(scrollController: scrollController),
-          name: AppResource.catalog.tr(),
-          body: _buildContent(),
-        );
-      },
+    return FadeAnimationWidget(
+      child: Column(
+        children: [
+          BannerHomeWidget(scrollController: scrollController),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 50),
+            child: Column(
+              children: [
+                GoldGradientTextWidget(
+                  text: AppResource.home.tr(),
+                  style: Theme.of(context).textTheme.xxLarger,
+                ),
+                const SizedBox(height: 40),
+                Row(
+                  children: [
+                    const Expanded(flex: 1, child: Offstage()),
+                    Expanded(
+                      flex: 10,
+                      child: _buildContent(),
+                    ),
+                    const Expanded(flex: 1, child: Offstage()),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 

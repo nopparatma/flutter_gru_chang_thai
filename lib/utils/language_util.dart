@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
 import 'package:flutter_gru_chang_thai/app/app_constant.dart';
 import 'package:flutter_gru_chang_thai/utils/string_util.dart';

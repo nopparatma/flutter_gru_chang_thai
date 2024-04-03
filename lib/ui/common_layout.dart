@@ -1,38 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/background_image_widget.dart';
-import 'package:flutter_gru_chang_thai/ui/widget/main_content_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/menu_top_bar_widget.dart';
+import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:sticky_headers/sticky_headers/widget.dart';
 
 class CommonLayout extends StatefulWidget {
-  final Widget Function(AutoScrollController scrollController) header;
-  final String name;
-  final Widget body;
-  final bool isShowBodyByScroll;
-  final String menuRouteSelect;
+  final GoRouterState goRouterState;
+  final Widget child;
 
   const CommonLayout({
-    required this.header,
-    required this.name,
-    required this.body,
-    required this.isShowBodyByScroll,
-    required this.menuRouteSelect,
+    required this.goRouterState,
+    required this.child,
     super.key,
   });
 
   @override
-  // ignore: library_private_types_in_public_api
-  _CommonLayoutState createState() => _CommonLayoutState();
+  CommonLayoutState createState() => CommonLayoutState();
 }
 
-class _CommonLayoutState extends State<CommonLayout> {
-  late AutoScrollController _scrollController;
-
-  late List<Widget> listMenuWidgets = [];
+class CommonLayoutState extends State<CommonLayout> {
+  List<Widget> listMenuWidgets = [];
 
   PackageInfo _packageInfo = PackageInfo(
     appName: 'Unknown',
@@ -45,8 +34,6 @@ class _CommonLayoutState extends State<CommonLayout> {
 
   @override
   void initState() {
-    _scrollController = AutoScrollController(initialScrollOffset: 0);
-
     _initPackageInfo();
 
     super.initState();
@@ -65,35 +52,13 @@ class _CommonLayoutState extends State<CommonLayout> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          const MenuTopBarWidget(),
           Expanded(
             child: ListView(
-              controller: _scrollController,
               physics: const ClampingScrollPhysics(),
               children: [
-                StickyHeader(
-                  controller: _scrollController, // Optional
-                  header: MenuTopBarWidget(menuRouteSelect: widget.menuRouteSelect),
-                  content: Column(
-                    children: [
-                      widget.header(_scrollController),
-                      AutoScrollTag(
-                        controller: _scrollController,
-                        key: const ValueKey(0),
-                        index: 0,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 40),
-                          child: MainContentWidget(
-                            title: widget.name,
-                            content: widget.body,
-                            isShowBodyByScroll: widget.isShowBodyByScroll,
-                            scrollController: _scrollController,
-                          ),
-                        ),
-                      ),
-                      _buildFooter(),
-                    ],
-                  ),
-                ),
+                widget.child,
+                _buildFooter(),
               ],
             ),
           ),
@@ -161,7 +126,8 @@ class _CommonLayoutState extends State<CommonLayout> {
                 textAlign: TextAlign.center,
               ),
               height,
-              _buildIconTextMobile(Icons.home_work, 'The Old Siam Plaza,\n2nd Floor, Zone Silk.'),
+              _buildIconTextMobile(Icons.home_work,
+                  'The Old Siam Plaza,\n2nd Floor, Zone Silk.'),
               height,
               _buildIconTextMobile(Icons.phone, '083-718-8850'),
               height,
@@ -171,12 +137,18 @@ class _CommonLayoutState extends State<CommonLayout> {
               height,
               Text(
                 'Copyright 2023 GruChangThaiGoldSmith.Com',
-                style: Theme.of(context).textTheme.smaller.copyWith(color: Colors.grey),
+                style: Theme.of(context)
+                    .textTheme
+                    .smaller
+                    .copyWith(color: Colors.grey),
               ),
               height,
               Text(
                 'Version: ${_packageInfo.version} build ${_packageInfo.buildNumber}',
-                style: Theme.of(context).textTheme.smaller.copyWith(color: Colors.grey),
+                style: Theme.of(context)
+                    .textTheme
+                    .smaller
+                    .copyWith(color: Colors.grey),
               ),
               height,
               SizedBox(
@@ -230,9 +202,11 @@ class _CommonLayoutState extends State<CommonLayout> {
                             ],
                           ),
                           const SizedBox(height: 10),
-                          Text('Guru-Chang Antique', style: Theme.of(context).textTheme.normal),
+                          Text('Guru-Chang Antique',
+                              style: Theme.of(context).textTheme.normal),
                           const SizedBox(height: 10),
-                          _buildIconTextDesktop(Icons.home_work, 'The Old Siam Plaza, 2nd Floor, Zone Silk.'),
+                          _buildIconTextDesktop(Icons.home_work,
+                              'The Old Siam Plaza, 2nd Floor, Zone Silk.'),
                           const SizedBox(height: 10),
                           _buildIconTextDesktop(Icons.phone, '083-718-8850'),
                           const SizedBox(height: 10),
@@ -311,11 +285,17 @@ class _CommonLayoutState extends State<CommonLayout> {
                         children: [
                           Text(
                             'Copyright 2023 GruChangThaiGoldSmith.Com',
-                            style: Theme.of(context).textTheme.smaller.copyWith(color: Colors.grey),
+                            style: Theme.of(context)
+                                .textTheme
+                                .smaller
+                                .copyWith(color: Colors.grey),
                           ),
                           Text(
                             'Version: ${_packageInfo.version} build ${_packageInfo.buildNumber}',
-                            style: Theme.of(context).textTheme.smaller.copyWith(color: Colors.grey),
+                            style: Theme.of(context)
+                                .textTheme
+                                .smaller
+                                .copyWith(color: Colors.grey),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10),

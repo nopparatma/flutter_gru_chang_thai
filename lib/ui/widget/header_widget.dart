@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
 
@@ -59,7 +60,10 @@ class _HeaderWidgetState extends State<HeaderWidget> {
               const SizedBox(width: 10),
               Text(
                 widget.title,
-                style: Theme.of(context).textTheme.normal.copyWith(fontWeight: FontWeight.bold),
+                style: Theme.of(context)
+                    .textTheme
+                    .normal
+                    .copyWith(fontWeight: FontWeight.bold),
               ),
             ],
           ),

@@ -1,11 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gru_chang_thai/shared/colors.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-
 import 'background_image_widget.dart';
 import 'gold_gradient_button_widget.dart';
 import 'gold_gradient_container_widget.dart';
@@ -17,11 +15,10 @@ class BannerHomeWidget extends StatefulWidget {
   const BannerHomeWidget({super.key, required this.scrollController});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _BannerHomeWidgetState createState() => _BannerHomeWidgetState();
+  BannerHomeWidgetState createState() => BannerHomeWidgetState();
 }
 
-class _BannerHomeWidgetState extends State<BannerHomeWidget> {
+class BannerHomeWidgetState extends State<BannerHomeWidget> {
   final presenterValues = [
     'assets/images/image_presenter2.png',
     'assets/images/image_presenter3.png',
@@ -46,7 +43,8 @@ class _BannerHomeWidgetState extends State<BannerHomeWidget> {
   }
 
   _onTapBanner() {
-    widget.scrollController.scrollToIndex(0, duration: const Duration(milliseconds: 800));
+    widget.scrollController
+        .scrollToIndex(0, duration: const Duration(milliseconds: 800));
   }
 
   @override
@@ -149,7 +147,10 @@ class _BannerHomeWidgetState extends State<BannerHomeWidget> {
                             width: 200,
                             child: GoldGradientButtonWidget(
                               text: 'Explore More',
-                              style: Theme.of(context).textTheme.normal.copyWith(color: colorBlack),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .normal
+                                  .copyWith(color: colorBlack),
                             ),
                           ),
                         ],
@@ -207,7 +208,10 @@ class _BannerHomeWidgetState extends State<BannerHomeWidget> {
                         width: 200,
                         child: GoldGradientButtonWidget(
                           text: 'Explore More',
-                          style: Theme.of(context).textTheme.normal.copyWith(color: colorBlack),
+                          style: Theme.of(context)
+                              .textTheme
+                              .normal
+                              .copyWith(color: colorBlack),
                         ),
                       ),
                       const SizedBox(height: 50),

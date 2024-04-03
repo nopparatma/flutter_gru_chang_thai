@@ -2,42 +2,85 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gru_chang_thai/app/app_resource.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
-import 'package:flutter_gru_chang_thai/ui/common_layout.dart';
-import 'package:flutter_gru_chang_thai/ui/router.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/custom_read_more_widget.dart';
+import 'package:flutter_gru_chang_thai/ui/widget/fade_animation_widget.dart';
+import 'package:flutter_gru_chang_thai/ui/widget/gold_gradient_text_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/header_widget.dart';
 
 class AboutUsPage extends StatefulWidget {
   const AboutUsPage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _AboutUsPageState createState() => _AboutUsPageState();
+  AboutUsPageState createState() => AboutUsPageState();
 }
 
-class _AboutUsPageState extends State<AboutUsPage> {
+class AboutUsPageState extends State<AboutUsPage> {
   @override
   Widget build(BuildContext context) {
-    return CommonLayout(
-      isShowBodyByScroll: false,
-      menuRouteSelect: RoutePaths.aboutUsPage,
-      header: (scrollController) => HeaderWidget(
-        title: AppResource.aboutUs.tr(),
-        fromPage: AppResource.home.tr(),
-      ),
-      name: AppResource.aboutUs.tr(),
-      body: Column(
+    return FadeAnimationWidget(
+      child: Column(
         children: [
-          for (int i = 0; i < 10; i++)
-            Column(
+          HeaderWidget(
+            title: AppResource.aboutUs.tr(),
+            fromPage: AppResource.home.tr(),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 50),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                _buildControlWidget(i),
-                const SizedBox(height: 50),
+                GoldGradientTextWidget(
+                  text: AppResource.aboutUs.tr(),
+                  style: Theme.of(context).textTheme.xxLarger,
+                ),
+                const SizedBox(height: 40),
+                Row(
+                  children: [
+                    const Expanded(flex: 1, child: Offstage()),
+                    Expanded(
+                      flex: 10,
+                      child: Column(
+                        children: [
+                          for (int i = 0; i < 10; i++)
+                            Column(
+                              children: [
+                                _buildControlWidget(i),
+                                const SizedBox(height: 50),
+                              ],
+                            ),
+                        ],
+                      ),
+                    ),
+                    const Expanded(flex: 1, child: Offstage()),
+                  ],
+                ),
               ],
             ),
+          ),
         ],
       ),
     );
+
+    // return CommonLayout(
+    //   isShowBodyByScroll: false,
+    //   menuRouteSelect: RoutePaths.aboutUsPage,
+    //   header: (scrollController) => HeaderWidget(
+    //     title: AppResource.aboutUs.tr(),
+    //     fromPage: AppResource.home.tr(),
+    //   ),
+    //   name: AppResource.aboutUs.tr(),
+    //   body: Column(
+    //     children: [
+    //       for (int i = 0; i < 10; i++)
+    //         Column(
+    //           children: [
+    //             _buildControlWidget(i),
+    //             const SizedBox(height: 50),
+    //           ],
+    //         ),
+    //     ],
+    //   ),
+    // );
   }
 
   Widget _buildControlWidget(int index) {
@@ -72,7 +115,10 @@ class _AboutUsPageState extends State<AboutUsPage> {
         children: [
           Text(
             'Contemporary Mission of “Royal Goldsmith”',
-            style: Theme.of(context).textTheme.normal.copyWith(fontWeight: FontWeight.bold),
+            style: Theme.of(context)
+                .textTheme
+                .normal
+                .copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 26),
           CustomReadMoreTextWidget(
@@ -80,7 +126,10 @@ class _AboutUsPageState extends State<AboutUsPage> {
             trimLines: 5,
             trimMode: TrimMode.Line,
             trimCollapsedText: 'Read more',
-            moreStyle: Theme.of(context).textTheme.normal.copyWith(fontWeight: FontWeight.bold),
+            moreStyle: Theme.of(context)
+                .textTheme
+                .normal
+                .copyWith(fontWeight: FontWeight.bold),
             isExpand: false,
             callback: (val) {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

@@ -1,15 +1,12 @@
 import 'dart:io';
-
-import 'package:catcher/core/catcher.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:flutter_gru_chang_thai/ui/go_router.dart';
 import 'package:flutter_gru_chang_thai/bloc/splash/splash_bloc.dart';
 import 'package:flutter_gru_chang_thai/shared/colors.dart';
 import 'package:flutter_gru_chang_thai/shared/ui_config.dart';
-import 'package:flutter_gru_chang_thai/ui/router.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:logger/logger.dart';
@@ -49,7 +46,7 @@ class MainAppLocalization extends StatelessWidget {
     if (kIsWeb) {
       return const MainWeb();
     } else if (Platform.isAndroid || Platform.isIOS) {
-      // return MainApp();
+      return Container();
     }
   }
 
@@ -67,11 +64,10 @@ class MainWeb extends StatefulWidget {
   const MainWeb({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _MainWebState createState() => _MainWebState();
+  MainWebState createState() => MainWebState();
 }
 
-class _MainWebState extends State<MainWeb> {
+class MainWebState extends State<MainWeb> {
   @override
   void initState() {
     super.initState();
@@ -81,7 +77,7 @@ class _MainWebState extends State<MainWeb> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapUp: (detail) => FocusScope.of(context).requestFocus(FocusNode()),
-      child: GetMaterialApp(
+      child: MaterialApp.router(
         title: AppConfig.instance.applicationName,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -107,9 +103,7 @@ class _MainWebState extends State<MainWeb> {
             const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
           ],
         ),
-        navigatorKey: Catcher.navigatorKey,
-        onGenerateRoute: WebRouter.generateRoute,
-        initialRoute: RoutePaths.splashPage,
+        routerConfig: WebGoRouter.generateRoute(),
       ),
     );
   }

@@ -14,13 +14,13 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   Future<void> mapSplashLoadInitEventToState(SplashLoadInitEvent event, Emitter<SplashState> emit) async {
     try {
       emit(LoadingSplashLoadInitState(mode: 'Unleash key'));
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(milliseconds: 500));
 
       emit(LoadingSplashLoadInitState(mode: 'Initial data'));
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(milliseconds: 500));
 
       emit(LoadingSplashLoadInitState(mode: 'Complete'));
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(milliseconds: 500));
 
       emit(SuccessSplashLoadInitState());
     } catch (e) {

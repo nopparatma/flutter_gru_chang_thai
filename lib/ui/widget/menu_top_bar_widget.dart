@@ -5,35 +5,40 @@ import 'package:flutter_gru_chang_thai/app/app_constant.dart';
 import 'package:flutter_gru_chang_thai/app/app_resource.dart';
 import 'package:flutter_gru_chang_thai/shared/colors.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
-import 'package:flutter_gru_chang_thai/ui/router.dart';
+import 'package:flutter_gru_chang_thai/ui/go_router.dart';
 import 'package:flutter_gru_chang_thai/utils/dialog_util.dart';
 import 'package:flutter_gru_chang_thai/utils/language_util.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-
 import 'gold_gradient_text_widget.dart';
 
 class MenuTopBarWidget extends StatefulWidget {
-  final String menuRouteSelect;
-
-  const MenuTopBarWidget({super.key, required this.menuRouteSelect});
+  const MenuTopBarWidget({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _MenuTopBarWidgetState createState() => _MenuTopBarWidgetState();
+  MenuTopBarWidgetState createState() => MenuTopBarWidgetState();
 }
 
-class _MenuTopBarWidgetState extends State<MenuTopBarWidget> {
+class MenuTopBarWidgetState extends State<MenuTopBarWidget> {
   final List<Map<String, String>> languageItems = [
-    {'value': 'th', 'name': 'ไทย', 'icon': 'assets/images/icon_thai.png'},
-    {'value': 'en', 'name': 'English', 'icon': 'assets/images/icon_english.png'},
+    {
+      'value': 'th',
+      'name': 'ไทย',
+      'icon': 'assets/images/icon_thai.png',
+    },
+    {
+      'value': 'en',
+      'name': 'English',
+      'icon': 'assets/images/icon_english.png'
+    },
   ];
   late Map<String, String> menuSelected;
 
   List<Map<String, String>> listMenus = [
-    {'name': AppResource.home, 'route': RoutePaths.homePage},
-    {'name': AppResource.antique, 'route': RoutePaths.catalogPage},
-    {'name': AppResource.aboutUs, 'route': RoutePaths.aboutUsPage},
-    {'name': AppResource.contactUs, 'route': RoutePaths.contactUsPage},
+    {'name': AppResource.home, 'route': RouteGoPaths.homePage},
+    {'name': AppResource.antique, 'route': RouteGoPaths.catalogPage},
+    {'name': AppResource.aboutUs, 'route': RouteGoPaths.aboutUsPage},
+    {'name': AppResource.contactUs, 'route': RouteGoPaths.contactUsPage},
   ];
 
   late String? selectedLanguageValue;
@@ -41,7 +46,8 @@ class _MenuTopBarWidgetState extends State<MenuTopBarWidget> {
 
   @override
   void initState() {
-    menuSelected = listMenus.firstWhere((a) => a['route'] == widget.menuRouteSelect, orElse: () => listMenus.first);
+    menuSelected = listMenus.firstWhere((a) => a['route'] == '',
+        orElse: () => listMenus.first);
 
     selectedLanguageValue = languageItems.first['value'];
 
@@ -131,12 +137,20 @@ class _MenuTopBarWidgetState extends State<MenuTopBarWidget> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Menu', style: Theme.of(context).textTheme.large.copyWith(fontWeight: FontWeight.bold)),
+                          Text('Menu',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .large
+                                  .copyWith(fontWeight: FontWeight.bold)),
                           const Divider(thickness: 0.2),
                           const SizedBox(height: 16),
                           _buildMobileMenus(),
                           const SizedBox(height: 32),
-                          Text('Change Language', style: Theme.of(context).textTheme.large.copyWith(fontWeight: FontWeight.bold)),
+                          Text('Change Language',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .large
+                                  .copyWith(fontWeight: FontWeight.bold)),
                           const Divider(thickness: 0.2),
                           const SizedBox(height: 16),
                           _buildLanguageDropdown(),
@@ -163,7 +177,7 @@ class _MenuTopBarWidgetState extends State<MenuTopBarWidget> {
           onTap: () {
             setState(() {
               menuSelected = item;
-              Navigator.pushNamed(context, menuSelected['route'] ?? AppConstant.emptyString);
+              context.go(menuSelected['route'] ?? AppConstant.emptyString);
             });
           },
         ),
@@ -185,7 +199,7 @@ class _MenuTopBarWidgetState extends State<MenuTopBarWidget> {
           onTap: () {
             setState(() {
               menuSelected = item;
-              Navigator.pushNamed(context, menuSelected['route'] ?? AppConstant.emptyString);
+              context.go(menuSelected['route'] ?? AppConstant.emptyString);
             });
           },
         ),
@@ -266,6 +280,7 @@ class _MenuTopBarWidgetState extends State<MenuTopBarWidget> {
       );
     }
 
-    return Text(item['name']?.tr() ?? AppConstant.emptyString, style: Theme.of(context).textTheme.normal);
+    return Text(item['name']?.tr() ?? AppConstant.emptyString,
+        style: Theme.of(context).textTheme.normal);
   }
 }

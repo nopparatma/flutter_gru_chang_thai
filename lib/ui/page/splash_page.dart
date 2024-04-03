@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gru_chang_thai/bloc/splash/splash_bloc.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
-import 'package:flutter_gru_chang_thai/ui/router.dart';
+import 'package:flutter_gru_chang_thai/ui/go_router.dart';
+import 'package:go_router/go_router.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -45,7 +46,7 @@ class _SplashPageState extends State<SplashPage> {
     return BlocListener<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state is SuccessSplashLoadInitState) {
-          Navigator.of(context).pushNamed(RoutePaths.homePage);
+          context.go(RouteGoPaths.homePage);
         }
       },
       child: Scaffold(
@@ -62,10 +63,13 @@ class _SplashPageState extends State<SplashPage> {
                     flex: 8,
                     child: CircleAvatar(
                       backgroundColor: Colors.transparent,
-                      radius: ResponsiveBreakpoints.of(context).isDesktop ? 300 : 150,
+                      radius: ResponsiveBreakpoints.of(context).isDesktop
+                          ? 300
+                          : 150,
                       child: Hero(
                         tag: 'splashscreenImage',
-                        child: Image.asset('assets/images/logo_gru_chang_no_bg.png'),
+                        child: Image.asset(
+                            'assets/images/logo_gru_chang_no_bg.png'),
                       ),
                     ),
                   ),

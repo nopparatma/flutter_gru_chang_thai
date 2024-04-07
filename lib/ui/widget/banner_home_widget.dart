@@ -65,7 +65,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
 
   Widget _buildDesktopView() {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.99 - 80,
+      height: MediaQuery.of(context).size.height,
       child: Stack(
         children: [
           const BackgroundImageWidget(isUseGradient: true),
@@ -82,7 +82,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
 
   Widget _buildMobileView() {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.99 - 80,
+      height: MediaQuery.of(context).size.height,
       child: Stack(
         children: [
           const BackgroundImageWidget(isUseGradient: true),
@@ -190,6 +190,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      const SizedBox(height: 80),
                       GoldGradientTextWidget(
                         text: 'Guru-Chang Antique',
                         style: Theme.of(context).textTheme.xLarger,

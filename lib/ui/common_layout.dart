@@ -49,19 +49,23 @@ class CommonLayoutState extends State<CommonLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+      body: Stack(
         children: [
-          const MenuTopBarWidget(),
-          Expanded(
-            child: ListView(
-              physics: const ClampingScrollPhysics(),
-              children: [
-                widget.child,
-                _buildFooter(),
-              ],
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Expanded(
+                child: ListView(
+                  physics: const ClampingScrollPhysics(),
+                  children: [
+                    widget.child,
+                    _buildFooter(),
+                  ],
+                ),
+              ),
+            ],
           ),
+          const MenuTopBarWidget(),
         ],
       ),
     );

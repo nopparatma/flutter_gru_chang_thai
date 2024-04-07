@@ -77,7 +77,7 @@ class MenuTopBarWidgetState extends State<MenuTopBarWidget> {
 
   Widget _buildDesktopView() {
     return Container(
-      color: colorBackground,
+      color: colorBackground.withOpacity(0.5),
       height: 80,
       child: Row(
         children: [
@@ -112,7 +112,7 @@ class MenuTopBarWidgetState extends State<MenuTopBarWidget> {
 
   Widget _buildMobileView() {
     return Container(
-      color: colorBackground,
+      color: colorBackground.withOpacity(0.5),
       height: 80,
       child: Row(
         children: [

@@ -24,7 +24,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 300,
       child: Stack(
         children: [
           const BackgroundImageWidget(isUseGradient: false),
@@ -40,6 +40,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          const SizedBox(height: 80),
           GoldGradientTextWidget(
             text: widget.title,
             style: Theme.of(context).textTheme.xLarger,

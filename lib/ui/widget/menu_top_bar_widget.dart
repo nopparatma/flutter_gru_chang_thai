@@ -199,6 +199,7 @@ class MenuTopBarWidgetState extends State<MenuTopBarWidget> {
           onTap: () {
             setState(() {
               menuSelected = item;
+              context.pop();
               context.go(menuSelected['route'] ?? AppConstant.emptyString);
             });
           },

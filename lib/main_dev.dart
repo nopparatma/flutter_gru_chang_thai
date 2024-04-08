@@ -6,6 +6,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gru_chang_thai/app/app.dart';
 import 'package:flutter_gru_chang_thai/app/app_config.dart';
+import 'package:flutter_gru_chang_thai/core/get_it.dart';
 import 'package:logger/logger.dart';
 
 Future<void> main() async {
@@ -13,6 +14,7 @@ Future<void> main() async {
   await EasyLocalization.ensureInitialized();
 
   AppConfig.dev();
+  setupGetIt();
 
   Logger.level = Level.all;
 

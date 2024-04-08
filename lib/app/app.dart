@@ -3,8 +3,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gru_chang_thai/core/bloc/application/application_bloc.dart';
+import 'package:flutter_gru_chang_thai/core/bloc/splash/splash_bloc.dart';
 import 'package:flutter_gru_chang_thai/ui/go_router.dart';
-import 'package:flutter_gru_chang_thai/bloc/splash/splash_bloc.dart';
 import 'package:flutter_gru_chang_thai/shared/colors.dart';
 import 'package:flutter_gru_chang_thai/shared/ui_config.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -20,8 +21,11 @@ class MainAppLocalization extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<ApplicationBloc>(
+          create: (context) => ApplicationBloc(),
+        ),
         BlocProvider<SplashBloc>(
-          create: (context) => SplashBloc(),
+          create: (context) => SplashBloc(BlocProvider.of<ApplicationBloc>(context)),
         ),
       ],
       child: EasyLocalization(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gru_chang_thai/bloc/splash/splash_bloc.dart';
+import 'package:flutter_gru_chang_thai/core/bloc/splash/splash_bloc.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
 import 'package:flutter_gru_chang_thai/ui/go_router.dart';
 import 'package:go_router/go_router.dart';

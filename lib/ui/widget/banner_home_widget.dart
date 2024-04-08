@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gru_chang_thai/core/bloc/application/application_bloc.dart';
 import 'package:flutter_gru_chang_thai/shared/colors.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -29,9 +31,13 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
 
   @override
   void initState() {
+
     timer = Timer.periodic(const Duration(seconds: 8), (timer) {
       setState(() => _index++);
     });
+
+    var test = BlocProvider.of<ApplicationBloc>(context).state.config;
+    debugPrint(test.toString());
 
     super.initState();
   }
@@ -43,8 +49,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
   }
 
   _onTapBanner() {
-    widget.scrollController
-        .scrollToIndex(0, duration: const Duration(milliseconds: 800));
+    widget.scrollController.scrollToIndex(0, duration: const Duration(milliseconds: 800));
   }
 
   @override
@@ -147,10 +152,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
                             width: 200,
                             child: GoldGradientButtonWidget(
                               text: 'Explore More',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .normal
-                                  .copyWith(color: colorBlack),
+                              style: Theme.of(context).textTheme.normal.copyWith(color: colorBlack),
                             ),
                           ),
                         ],
@@ -209,10 +211,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
                         width: 200,
                         child: GoldGradientButtonWidget(
                           text: 'Explore More',
-                          style: Theme.of(context)
-                              .textTheme
-                              .normal
-                              .copyWith(color: colorBlack),
+                          style: Theme.of(context).textTheme.normal.copyWith(color: colorBlack),
                         ),
                       ),
                       const SizedBox(height: 50),

@@ -63,13 +63,10 @@ class _SplashPageState extends State<SplashPage> {
                     flex: 8,
                     child: CircleAvatar(
                       backgroundColor: Colors.transparent,
-                      radius: ResponsiveBreakpoints.of(context).isDesktop
-                          ? 300
-                          : 150,
+                      radius: ResponsiveBreakpoints.of(context).isDesktop ? 300 : 150,
                       child: Hero(
                         tag: 'splashscreenImage',
-                        child: Image.asset(
-                            'assets/images/logo_gru_chang_no_bg.png'),
+                        child: Image.asset('assets/images/logo_gru_chang_no_bg.png'),
                       ),
                     ),
                   ),
@@ -78,9 +75,17 @@ class _SplashPageState extends State<SplashPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        LoadingAnimationWidget.threeArchedCircle(
-                          color: Colors.yellow,
-                          size: 50,
+                        BlocBuilder<SplashBloc, SplashState>(
+                          builder: (context, state) {
+                            if (state is LoadingSplashLoadInitState) {
+                              return LoadingAnimationWidget.threeArchedCircle(
+                                color: Colors.yellow,
+                                size: 50,
+                              );
+                            }
+
+                            return const Offstage();
+                          },
                         ),
                         const SizedBox(height: 40.0),
                         _buildMode(),
@@ -126,6 +131,17 @@ class _SplashPageState extends State<SplashPage> {
               ],
             ),
             textAlign: TextAlign.end,
+          );
+        }
+
+        if (state is ErrorSplashLoadInitState) {
+          return Text(
+            'Uh oh!\nLooks like something broke.',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.normal.copyWith(
+              fontWeight: FontWeight.bold,
+              color: Colors.amberAccent,
+            ),
           );
         }
 

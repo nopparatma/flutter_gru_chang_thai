@@ -35,7 +35,7 @@ class AppConfig {
   static AppConfig prod() {
     return AppConfig(
       applicationName: 'GruChang Thai Gold Smith',
-      gruChangThaiApiServerUrl: 'http://167.235.225.151:6923',
+      gruChangThaiApiServerUrl: 'https://167.235.225.151:6923',
     );
   }
 

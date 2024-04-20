@@ -28,14 +28,14 @@ class AppConfig {
   static AppConfig dev() {
     return AppConfig(
       applicationName: 'GruChang Thai Gold Smith DEV',
-      gruChangThaiApiServerUrl: 'https://localhost:6923',
+      gruChangThaiApiServerUrl: 'http://localhost:6923',
     );
   }
 
   static AppConfig prod() {
     return AppConfig(
       applicationName: 'GruChang Thai Gold Smith',
-      gruChangThaiApiServerUrl: 'https://gruchangthaiservice.up.railway.app',
+      gruChangThaiApiServerUrl: 'https://gruchangthaiservice-production.up.railway.app',
     );
   }
 

@@ -16,3 +16,4 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 flutter build web --release --web-renderer html -t "lib/main_prod.dart" -v
+flutter build web --release --web-renderer canvaskit -t "lib/main_prod.dart" -v

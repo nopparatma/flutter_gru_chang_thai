@@ -8,12 +8,8 @@ import 'package:flutter_gru_chang_thai/app/app.dart';
 import 'package:flutter_gru_chang_thai/app/app_config.dart';
 import 'package:flutter_gru_chang_thai/core/get_it.dart';
 import 'package:logger/logger.dart';
-import 'dart:js' as js;
 
 Future<void> main() async {
-  // Call JavaScript function to hide URL bar on scroll
-  js.context.callMethod('hideUrlBarOnScroll');
-
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 

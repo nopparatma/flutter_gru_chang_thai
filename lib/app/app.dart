@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gru_chang_thai/core/bloc/application/application_bloc.dart';
@@ -82,6 +83,7 @@ class MainWebState extends State<MainWeb> {
     return GestureDetector(
       onTapUp: (detail) => FocusScope.of(context).requestFocus(FocusNode()),
       child: MaterialApp.router(
+        scrollBehavior: MyCustomScrollBehavior(),
         title: AppConfig.instance.applicationName,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -132,4 +134,14 @@ class AppLogger extends Logger {
   static AppLogger get instance {
     return _instance;
   }
+}
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  // Override behavior methods and getters like dragDevices
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+    // etc.
+  };
 }

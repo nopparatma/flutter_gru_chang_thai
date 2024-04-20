@@ -29317,7 +29317,7 @@ while(true)switch(s){case 0:if($.V==null)A.apU()
 $.V.toString
 s=2
 return A.P(A.abo(),$async$aB0)
-case 2:$.aQS=new A.JO("GruChang Thai Gold Smith","https://167.235.225.151:6923")
+case 2:$.aQS=new A.JO("GruChang Thai Gold Smith","https://gruchangthaiservice.up.railway.app")
 A.b2d()
 q=new A.a8R(A.a([A.aRy()],t.fR),5000,new A.TR(),B.UV,B.ZF,B.ZH,B.iD,null)
 p=t.N

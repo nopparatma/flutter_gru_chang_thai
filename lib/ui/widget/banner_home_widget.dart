@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gru_chang_thai/core/bloc/application/application_bloc.dart';
 import 'package:flutter_gru_chang_thai/shared/colors.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
+import 'package:flutter_gru_chang_thai/utils/image_util.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'background_image_widget.dart';
@@ -21,11 +22,7 @@ class BannerHomeWidget extends StatefulWidget {
 }
 
 class BannerHomeWidgetState extends State<BannerHomeWidget> {
-  final presenterValues = [
-    'assets/images/image_presenter2.png',
-    'assets/images/image_presenter3.png',
-    'assets/images/image_presenter4.png',
-  ];
+  List<String> presenterValues = [];
   int _index = 0;
   late final Timer timer;
 
@@ -36,8 +33,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
       setState(() => _index++);
     });
 
-    var test = BlocProvider.of<ApplicationBloc>(context).state.config;
-    debugPrint(test.toString());
+    presenterValues = BlocProvider.of<ApplicationBloc>(context).state.getConfigValues('IMAGE_PRESENTER');
 
     super.initState();
   }
@@ -258,9 +254,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
               child: Align(
                 key: UniqueKey(),
                 alignment: Alignment.bottomRight,
-                child: Image.asset(
-                  presenterValues[_index % presenterValues.length],
-                ),
+                child: Image.memory(ImageUtil.convertBase64Image(presenterValues[_index % presenterValues.length])),
               ),
             ),
           ),
@@ -286,9 +280,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
         child: Align(
           key: UniqueKey(),
           alignment: Alignment.bottomCenter,
-          child: Image.asset(
-            presenterValues[_index % presenterValues.length],
-          ),
+          child: Image.memory(ImageUtil.convertBase64Image(presenterValues[_index % presenterValues.length])),
         ),
       ),
     );

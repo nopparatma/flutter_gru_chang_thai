@@ -16,4 +16,8 @@ class ApplicationState extends Equatable {
 
   @override
   List<Object?> get props => [config];
+
+  List<String> getConfigValues(String key) {
+    return config?.getMasterData?.listMasterData?.where((element) => element.key == key).map((e) => e.data ?? '').toList() ?? [];
+  }
 }

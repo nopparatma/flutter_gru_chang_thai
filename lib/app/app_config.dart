@@ -28,7 +28,7 @@ class AppConfig {
   static AppConfig dev() {
     return AppConfig(
       applicationName: 'GruChang Thai Gold Smith DEV',
-      gruChangThaiApiServerUrl: 'http://localhost:6923',
+      gruChangThaiApiServerUrl: 'http://localhost:3000',
     );
   }
 

@@ -29,10 +29,10 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
       await Future.delayed(const Duration(milliseconds: 500));
 
       GetHomeProductRs getHomeProductRs = await _productService.getHomeProduct(GetHomeProductRq());
-      GetMasterDataRs getMasterDataRsRs = await _masterService.getMasterData(GetMasterDataRq());
+      GetMasterDataRs getMasterDataRs = await _masterService.getMasterData(GetMasterDataRq());
 
       // update session
-      applicationBloc.add(ApplicationUpdateStateModelEvent(config: getMasterDataRsRs));
+      applicationBloc.add(ApplicationUpdateStateModelEvent(config: getMasterDataRs));
 
       emit(LoadingSplashLoadInitState(mode: 'Complete'));
       await Future.delayed(const Duration(milliseconds: 500));

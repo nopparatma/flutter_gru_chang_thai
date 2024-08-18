@@ -35,7 +35,7 @@ class AppConfig {
   static AppConfig prod() {
     return AppConfig(
       applicationName: 'GruChang Thai Gold Smith',
-      gruChangThaiApiServerUrl: 'https://gruchangthaiservice-production.up.railway.app',
+      gruChangThaiApiServerUrl: 'https://36fe-167-235-243-206.ngrok-free.app',
     );
   }
 

@@ -75,37 +75,34 @@ class MainWebState extends State<MainWeb> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      translations: TranslationService(),
-      locale: const Locale('th', 'TH'),
-      fallbackLocale: const Locale('th', 'TH'),
-      scrollBehavior: CustomScrollBehavior(),
-      title: AppConfig.instance.applicationName,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: appFontFamily,
-        textTheme: Theme.of(context).textTheme.apply(
-              bodyColor: Colors.white,
-              displayColor: Colors.white,
-              fontFamily: appFontFamily,
+        translations: TranslationService(),
+        locale: const Locale('th', 'TH'),
+        fallbackLocale: const Locale('th', 'TH'),
+        scrollBehavior: CustomScrollBehavior(),
+        title: AppConfig.instance.applicationName,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: appFontFamily,
+          textTheme: Theme.of(context).textTheme.apply(
+                bodyColor: Colors.white,
+                displayColor: Colors.white,
+                fontFamily: appFontFamily,
+              ),
+          iconTheme: const IconThemeData(color: Colors.white),
+          primaryColor: colorBackground,
+        ),
+        builder: (context, widget) => ResponsiveBreakpoints.builder(
+              child: widget!,
+              breakpoints: [
+                const Breakpoint(start: 0, end: 450, name: MOBILE),
+                const Breakpoint(start: 451, end: 820, name: TABLET),
+                const Breakpoint(start: 821, end: 1920, name: DESKTOP),
+                const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+              ],
             ),
-        iconTheme: const IconThemeData(
-          color: Colors.white
-        )
-      ),
-      builder: (context, widget) => ResponsiveBreakpoints.builder(
-        child: widget!,
-        breakpoints: [
-          const Breakpoint(start: 0, end: 450, name: MOBILE),
-          const Breakpoint(start: 451, end: 820, name: TABLET),
-          const Breakpoint(start: 821, end: 1920, name: DESKTOP),
-          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-        ],
-      ),
-      getPages: WebGetXRouter.routes,
-      // initialRoute: RoutePath.splashPage,
-      navigatorKey: Catcher.navigatorKey,
-      home: const SplashPage()
-    );
+        getPages: WebGetXRouter.routes,
+        navigatorKey: Catcher.navigatorKey,
+        home: const SplashPage());
   }
 }
 

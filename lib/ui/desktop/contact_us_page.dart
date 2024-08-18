@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gru_chang_thai/app/app_resource.dart';
 import 'package:flutter_gru_chang_thai/shared/colors.dart';
@@ -7,6 +6,7 @@ import 'package:flutter_gru_chang_thai/ui/widget/custom_text_field_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/gold_gradient_button_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/gold_gradient_text_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/header_widget.dart';
+import 'package:get/get.dart';
 
 class DesktopContactUsPage extends StatefulWidget {
   const DesktopContactUsPage({super.key});
@@ -21,8 +21,8 @@ class DesktopContactUsPageState extends State<DesktopContactUsPage> {
     return Column(
       children: [
         HeaderWidget(
-          title: AppResource.contactUs.tr(),
-          fromPage: AppResource.home.tr(),
+          title: AppResource.contactUs.tr,
+          fromPage: AppResource.home.tr,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 50),
@@ -30,7 +30,7 @@ class DesktopContactUsPageState extends State<DesktopContactUsPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               GoldGradientTextWidget(
-                text: AppResource.contactUs.tr(),
+                text: AppResource.contactUs.tr,
                 style: Theme.of(context).textTheme.xxLarger,
               ),
               const SizedBox(height: 40),

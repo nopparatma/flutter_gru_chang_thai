@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gru_chang_thai/app/app_resource.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_gru_chang_thai/ui/widget/fade_animation_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/gold_gradient_box_item_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/banner_home_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/gold_gradient_text_widget.dart';
+import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
@@ -44,7 +44,7 @@ class HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 GoldGradientTextWidget(
-                  text: AppResource.home.tr(),
+                  text: AppResource.home.tr,
                   style: Theme.of(context).textTheme.xxLarger,
                 ),
                 const SizedBox(height: 40),

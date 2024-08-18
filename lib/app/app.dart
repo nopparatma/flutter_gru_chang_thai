@@ -1,14 +1,17 @@
 import 'dart:io';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:catcher/core/catcher.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gru_chang_thai/core/bloc/application/application_bloc.dart';
 import 'package:flutter_gru_chang_thai/core/bloc/splash/splash_bloc.dart';
+import 'package:flutter_gru_chang_thai/core/service/translation_service.dart';
 import 'package:flutter_gru_chang_thai/ui/go_router.dart';
 import 'package:flutter_gru_chang_thai/shared/colors.dart';
 import 'package:flutter_gru_chang_thai/shared/ui_config.dart';
+import 'package:flutter_gru_chang_thai/ui/page/splash_page.dart';
+import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:logger/logger.dart';
@@ -29,20 +32,20 @@ class MainAppLocalization extends StatelessWidget {
           create: (context) => SplashBloc(BlocProvider.of<ApplicationBloc>(context)),
         ),
       ],
-      child: EasyLocalization(
-        path: 'assets/languages',
-        supportedLocales: const [
-          Locale('th'),
-          Locale('en'),
-        ],
-        fallbackLocale: const Locale('th'),
-        startLocale: const Locale('th'),
-        child: GlobalLoaderOverlay(
-          useDefaultLoading: false,
-          overlayColor: Colors.black.withOpacity(0.5),
-          overlayWidgetBuilder: (progress) => buildOverlayLoader(),
-          child: buildChild(),
-        ),
+      child: GlobalLoaderOverlay(
+        useDefaultLoading: false,
+        overlayColor: Colors.black.withOpacity(0.5),
+        overlayWidgetBuilder: (progress) => buildOverlayLoader(),
+        child: buildChild(),
+      ),
+    );
+  }
+
+  Widget buildOverlayLoader() {
+    return Center(
+      child: LoadingAnimationWidget.staggeredDotsWave(
+        color: Colors.red.shade900,
+        size: 100,
       ),
     );
   }
@@ -53,15 +56,6 @@ class MainAppLocalization extends StatelessWidget {
     } else if (Platform.isAndroid || Platform.isIOS) {
       return Container();
     }
-  }
-
-  Widget buildOverlayLoader() {
-    return Center(
-      child: LoadingAnimationWidget.staggeredDotsWave(
-        color: Colors.red.shade900,
-        size: 100,
-      ),
-    );
   }
 }
 
@@ -80,37 +74,34 @@ class MainWebState extends State<MainWeb> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapUp: (detail) => FocusScope.of(context).requestFocus(FocusNode()),
-      child: MaterialApp.router(
-        scrollBehavior: MyCustomScrollBehavior(),
-        title: AppConfig.instance.applicationName,
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          fontFamily: appFontFamily,
-          colorScheme: const ColorScheme.dark(
-            background: colorBackground,
-          ),
-          textTheme: Theme.of(context).textTheme.apply(
-                bodyColor: Colors.white,
-                displayColor: Colors.white,
-                fontFamily: appFontFamily,
-              ),
-        ),
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        builder: (context, widget) => ResponsiveBreakpoints.builder(
-          child: widget!,
-          breakpoints: [
-            const Breakpoint(start: 0, end: 450, name: MOBILE),
-            const Breakpoint(start: 451, end: 820, name: TABLET),
-            const Breakpoint(start: 821, end: 1920, name: DESKTOP),
-            const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-          ],
-        ),
-        routerConfig: WebGoRouter.generateRoute(),
+    return GetMaterialApp(
+      translations: TranslationService(),
+      locale: const Locale('th', 'TH'),
+      fallbackLocale: const Locale('th', 'TH'),
+      scrollBehavior: CustomScrollBehavior(),
+      title: AppConfig.instance.applicationName,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        fontFamily: appFontFamily,
+        textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: Colors.white,
+              displayColor: Colors.white,
+              fontFamily: appFontFamily,
+            ),
       ),
+      builder: (context, widget) => ResponsiveBreakpoints.builder(
+        child: widget!,
+        breakpoints: [
+          const Breakpoint(start: 0, end: 450, name: MOBILE),
+          const Breakpoint(start: 451, end: 820, name: TABLET),
+          const Breakpoint(start: 821, end: 1920, name: DESKTOP),
+          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+        ],
+      ),
+      getPages: WebGetXRouter.routes,
+      // initialRoute: RoutePath.splashPage,
+      navigatorKey: Catcher.navigatorKey,
+      home: const SplashPage()
     );
   }
 }
@@ -136,12 +127,12 @@ class AppLogger extends Logger {
   }
 }
 
-class MyCustomScrollBehavior extends MaterialScrollBehavior {
+class CustomScrollBehavior extends MaterialScrollBehavior {
   // Override behavior methods and getters like dragDevices
   @override
   Set<PointerDeviceKind> get dragDevices => {
-    PointerDeviceKind.touch,
-    PointerDeviceKind.mouse,
-    // etc.
-  };
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        // etc.
+      };
 }

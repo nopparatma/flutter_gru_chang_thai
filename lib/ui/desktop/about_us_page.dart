@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gru_chang_thai/app/app_resource.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_gru_chang_thai/ui/widget/custom_read_more_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/fade_animation_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/gold_gradient_text_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/header_widget.dart';
+import 'package:get/get.dart';
 
 class DesktopAboutUsPage extends StatefulWidget {
   const DesktopAboutUsPage({super.key});
@@ -21,8 +21,8 @@ class DesktopAboutUsPageState extends State<DesktopAboutUsPage> {
       child: Column(
         children: [
           HeaderWidget(
-            title: AppResource.aboutUs.tr(),
-            fromPage: AppResource.home.tr(),
+            title: AppResource.aboutUs.tr,
+            fromPage: AppResource.home.tr,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 50),
@@ -30,7 +30,7 @@ class DesktopAboutUsPageState extends State<DesktopAboutUsPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 GoldGradientTextWidget(
-                  text: AppResource.aboutUs.tr(),
+                  text: AppResource.aboutUs.tr,
                   style: Theme.of(context).textTheme.xxLarger,
                 ),
                 const SizedBox(height: 40),

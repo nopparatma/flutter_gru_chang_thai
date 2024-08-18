@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gru_chang_thai/shared/colors.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/background_image_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/menu_top_bar_widget.dart';
-import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class CommonLayout extends StatefulWidget {
-  final GoRouterState goRouterState;
   final Widget child;
 
   const CommonLayout({
-    required this.goRouterState,
     required this.child,
     super.key,
   });
@@ -49,6 +47,7 @@ class CommonLayoutState extends State<CommonLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: colorBackground,
       body: Stack(
         children: [
           Column(
@@ -130,8 +129,7 @@ class CommonLayoutState extends State<CommonLayout> {
                 textAlign: TextAlign.center,
               ),
               height,
-              _buildIconTextMobile(Icons.home_work,
-                  'The Old Siam Plaza,\n2nd Floor, Zone Silk.'),
+              _buildIconTextMobile(Icons.home_work, 'The Old Siam Plaza,\n2nd Floor, Zone Silk.'),
               height,
               _buildIconTextMobile(Icons.phone, '083-718-8850'),
               height,
@@ -141,18 +139,12 @@ class CommonLayoutState extends State<CommonLayout> {
               height,
               Text(
                 'Copyright 2023 GruChangThaiGoldSmith.Com',
-                style: Theme.of(context)
-                    .textTheme
-                    .smaller
-                    .copyWith(color: Colors.grey),
+                style: Theme.of(context).textTheme.smaller.copyWith(color: Colors.grey),
               ),
               height,
               Text(
                 'Version: ${_packageInfo.version} build ${_packageInfo.buildNumber}',
-                style: Theme.of(context)
-                    .textTheme
-                    .smaller
-                    .copyWith(color: Colors.grey),
+                style: Theme.of(context).textTheme.smaller.copyWith(color: Colors.grey),
               ),
               height,
               SizedBox(
@@ -206,11 +198,9 @@ class CommonLayoutState extends State<CommonLayout> {
                             ],
                           ),
                           const SizedBox(height: 10),
-                          Text('Guru-Chang Antique',
-                              style: Theme.of(context).textTheme.normal),
+                          Text('Guru-Chang Antique', style: Theme.of(context).textTheme.normal),
                           const SizedBox(height: 10),
-                          _buildIconTextDesktop(Icons.home_work,
-                              'The Old Siam Plaza, 2nd Floor, Zone Silk.'),
+                          _buildIconTextDesktop(Icons.home_work, 'The Old Siam Plaza, 2nd Floor, Zone Silk.'),
                           const SizedBox(height: 10),
                           _buildIconTextDesktop(Icons.phone, '083-718-8850'),
                           const SizedBox(height: 10),
@@ -289,17 +279,11 @@ class CommonLayoutState extends State<CommonLayout> {
                         children: [
                           Text(
                             'Copyright 2023 GruChangThaiGoldSmith.Com',
-                            style: Theme.of(context)
-                                .textTheme
-                                .smaller
-                                .copyWith(color: Colors.grey),
+                            style: Theme.of(context).textTheme.smaller.copyWith(color: Colors.grey),
                           ),
                           Text(
                             'Version: ${_packageInfo.version} build ${_packageInfo.buildNumber}',
-                            style: Theme.of(context)
-                                .textTheme
-                                .smaller
-                                .copyWith(color: Colors.grey),
+                            style: Theme.of(context).textTheme.smaller.copyWith(color: Colors.grey),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10),

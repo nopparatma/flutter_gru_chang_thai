@@ -28,14 +28,13 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
 
   @override
   void initState() {
+    super.initState();
 
     timer = Timer.periodic(const Duration(seconds: 8), (timer) {
       setState(() => _index++);
     });
 
-    presenterValues = BlocProvider.of<ApplicationBloc>(context).state.getConfigValues('IMAGE_PRESENTER');
-
-    super.initState();
+    presenterValues = context.read<ApplicationBloc>().state.getConfigValues('IMAGE_PRESENTER');
   }
 
   @override
@@ -254,7 +253,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
               child: Align(
                 key: UniqueKey(),
                 alignment: Alignment.bottomRight,
-                child: Image.memory(ImageUtil.convertBase64Image(presenterValues[_index % presenterValues.length])),
+                child: presenterValues.isNotEmpty ? Image.memory(ImageUtil.convertBase64Image(presenterValues[_index % presenterValues.length])) : Container(),
               ),
             ),
           ),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gru_chang_thai/core/bloc/splash/splash_bloc.dart';
+import 'package:flutter_gru_chang_thai/shared/colors.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
 import 'package:flutter_gru_chang_thai/ui/go_router.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -46,10 +47,11 @@ class _SplashPageState extends State<SplashPage> {
     return BlocListener<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state is SuccessSplashLoadInitState) {
-          context.go(RouteGoPaths.homePage);
+          Get.offAllNamed(RoutePath.homePage);
         }
       },
       child: Scaffold(
+        backgroundColor: colorBackground,
         body: InkWell(
           onTap: () {},
           child: Row(

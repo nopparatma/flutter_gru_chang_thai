@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/route_manager.dart';
 import 'package:flutter_gru_chang_thai/app/app_constant.dart';
@@ -11,14 +10,12 @@ class LanguageUtil {
 
     // Default language
     if (StringUtil.isNullOrEmpty(language)) {
-      await EasyLocalization.of(context)?.setLocale(locale);
       await Get.updateLocale(locale);
       return;
     }
 
     // Set language
     locale = Locale(language ?? AppConstant.emptyString);
-    await EasyLocalization.of(context)?.setLocale(locale);
     await Get.updateLocale(locale);
   }
 }

@@ -181,10 +181,7 @@ class MenuTopBarWidgetState extends State<MenuTopBarWidget> {
         InkWell(
           child: _buildText(item),
           onTap: () {
-            setState(() {
-              // context.pop();
-              // context.go(menuSelected['route'] ?? AppConstant.emptyString);
-            });
+            Get.toNamed(item['route'] ?? AppConstant.emptyString);
           },
         ),
         const Padding(
@@ -210,6 +207,7 @@ class MenuTopBarWidgetState extends State<MenuTopBarWidget> {
             color: Colors.transparent,
           ),
         ),
+        dropdownStyleData: const DropdownStyleData(decoration: BoxDecoration(color: colorBackground)),
         menuItemStyleData: const MenuItemStyleData(padding: EdgeInsets.all(0)),
         iconStyleData: const IconStyleData(
           icon: Icon(

@@ -52,7 +52,7 @@ class DialogUtil {
   static Future<dynamic> showBottomSheet(
     BuildContext context, {
     required Widget child,
-    Color backgroundColor = colorDarkRed,
+    Color backgroundColor = colorBackground,
     bool isShowCloseButton = true,
     bool barrierDismissible = false,
     Color closeButtonColor = colorDarkRed,
@@ -64,6 +64,7 @@ class DialogUtil {
       context: context,
       maxHeight: 0.8,
       initHeight: 0.8,
+      bottomSheetColor: backgroundColor,
       builder: (context, scrollController, bottomSheetOffset) {
         return PopScope(
           onPopInvoked: onTapClose?.call(),

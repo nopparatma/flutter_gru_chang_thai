@@ -47,6 +47,14 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
     widget.scrollController.scrollToIndex(0, duration: const Duration(milliseconds: 800));
   }
 
+  Widget _buildImage() {
+    if (presenterValues.isNotEmpty) {
+      return Image.memory(ImageUtil.convertBase64Image(presenterValues[_index % presenterValues.length]));
+    }
+
+    return Container();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -253,7 +261,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
               child: Align(
                 key: UniqueKey(),
                 alignment: Alignment.bottomRight,
-                child: presenterValues.isNotEmpty ? Image.memory(ImageUtil.convertBase64Image(presenterValues[_index % presenterValues.length])) : Container(),
+                child: _buildImage(),
               ),
             ),
           ),
@@ -279,7 +287,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
         child: Align(
           key: UniqueKey(),
           alignment: Alignment.bottomCenter,
-          child: Image.memory(ImageUtil.convertBase64Image(presenterValues[_index % presenterValues.length])),
+          child: _buildImage(),
         ),
       ),
     );

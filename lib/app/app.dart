@@ -88,6 +88,9 @@ class MainWebState extends State<MainWeb> {
               displayColor: Colors.white,
               fontFamily: appFontFamily,
             ),
+        iconTheme: const IconThemeData(
+          color: Colors.white
+        )
       ),
       builder: (context, widget) => ResponsiveBreakpoints.builder(
         child: widget!,

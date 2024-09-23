@@ -11,12 +11,13 @@ import 'package:flutter_gru_chang_thai/core/service/translation_service.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:logger/logger.dart';
+import 'package:path_provider/path_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await TranslationService.loadTranslations();
   HydratedBloc.storage = await HydratedStorage.build(
-    storageDirectory: HydratedStorage.webStorageDirectory,
+    storageDirectory: kIsWeb ? HydratedStorage.webStorageDirectory : await getApplicationDocumentsDirectory(),
   );
 
   AppConfig.dev();

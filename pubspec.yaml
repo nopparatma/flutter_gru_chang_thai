@@ -3,7 +3,7 @@ description: "A new Flutter project."
 
 publish_to: 'none' 
 
-version: 1.0.0+15
+version: 1.0.0+16
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
@@ -39,6 +39,7 @@ dependencies:
   hydrated_bloc: 9.1.5
   encrypt: 5.0.3
   flutter_secure_storage: 9.2.2
+  path_provider: 2.1.4
 
 dev_dependencies:
   flutter_test:

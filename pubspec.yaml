@@ -3,7 +3,7 @@ description: "A new Flutter project."
 
 publish_to: 'none' 
 
-version: 1.0.0+14
+version: 1.0.0+15
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
@@ -34,6 +34,11 @@ dependencies:
   dio: 5.4.2+1
   json_annotation: 4.8.1
   equatable: 2.0.5
+  flutter_phoenix: 1.1.1
+  shared_preferences: 2.3.2
+  hydrated_bloc: 9.1.5
+  encrypt: 5.0.3
+  flutter_secure_storage: 9.2.2
 
 dev_dependencies:
   flutter_test:

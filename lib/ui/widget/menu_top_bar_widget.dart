@@ -4,7 +4,7 @@ import 'package:flutter_gru_chang_thai/app/app_constant.dart';
 import 'package:flutter_gru_chang_thai/app/app_resource.dart';
 import 'package:flutter_gru_chang_thai/shared/colors.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
-import 'package:flutter_gru_chang_thai/ui/go_router.dart';
+import 'package:flutter_gru_chang_thai/ui/router.dart';
 import 'package:flutter_gru_chang_thai/utils/dialog_util.dart';
 import 'package:flutter_gru_chang_thai/utils/language_util.dart';
 import 'package:get/get.dart';

@@ -4,19 +4,20 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gru_chang_thai/app/app_middleware.dart';
 import 'package:flutter_gru_chang_thai/core/bloc/application/application_bloc.dart';
 import 'package:flutter_gru_chang_thai/core/bloc/splash/splash_bloc.dart';
 import 'package:flutter_gru_chang_thai/core/service/translation_service.dart';
-import 'package:flutter_gru_chang_thai/ui/go_router.dart';
+import 'package:flutter_gru_chang_thai/ui/router.dart';
 import 'package:flutter_gru_chang_thai/shared/colors.dart';
 import 'package:flutter_gru_chang_thai/shared/ui_config.dart';
-import 'package:flutter_gru_chang_thai/ui/page/splash_page.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:logger/logger.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'app_config.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart' as transitions_type;
 
 class MainAppLocalization extends StatelessWidget {
   const MainAppLocalization({super.key});
@@ -75,34 +76,38 @@ class MainWebState extends State<MainWeb> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        translations: TranslationService(),
-        locale: const Locale('th', 'TH'),
-        fallbackLocale: const Locale('th', 'TH'),
-        scrollBehavior: CustomScrollBehavior(),
-        title: AppConfig.instance.applicationName,
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          fontFamily: appFontFamily,
-          textTheme: Theme.of(context).textTheme.apply(
-                bodyColor: Colors.white,
-                displayColor: Colors.white,
-                fontFamily: appFontFamily,
-              ),
-          iconTheme: const IconThemeData(color: Colors.white),
-          primaryColor: colorBackground,
-        ),
-        builder: (context, widget) => ResponsiveBreakpoints.builder(
-              child: widget!,
-              breakpoints: [
-                const Breakpoint(start: 0, end: 450, name: MOBILE),
-                const Breakpoint(start: 451, end: 820, name: TABLET),
-                const Breakpoint(start: 821, end: 1920, name: DESKTOP),
-                const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-              ],
+      translations: TranslationService(),
+      locale: const Locale('th', 'TH'),
+      fallbackLocale: const Locale('th', 'TH'),
+      scrollBehavior: CustomScrollBehavior(),
+      title: AppConfig.instance.applicationName,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        fontFamily: appFontFamily,
+        textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: Colors.white,
+              displayColor: Colors.white,
+              fontFamily: appFontFamily,
             ),
-        getPages: WebGetXRouter.routes,
-        navigatorKey: Catcher.navigatorKey,
-        home: const SplashPage());
+        iconTheme: const IconThemeData(color: Colors.white),
+        primaryColor: colorBackground,
+      ),
+      builder: (context, widget) => ResponsiveBreakpoints.builder(
+        child: widget!,
+        breakpoints: [
+          const Breakpoint(start: 0, end: 450, name: MOBILE),
+          const Breakpoint(start: 451, end: 820, name: TABLET),
+          const Breakpoint(start: 821, end: 1920, name: DESKTOP),
+          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+        ],
+      ),
+      navigatorObservers: [AppMiddleware()],
+      defaultTransition: transitions_type.Transition.noTransition,
+      unknownRoute: WebGetXRouter.routes.first,
+      getPages: WebGetXRouter.routes,
+      navigatorKey: Catcher.navigatorKey,
+      initialRoute: RoutePath.index,
+    );
   }
 }
 

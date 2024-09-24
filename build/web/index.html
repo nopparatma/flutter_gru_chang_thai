@@ -25,11 +25,6 @@
     document.addEventListener("DOMContentLoaded", function() {
       const themeColor = document.querySelector('meta[name="theme-color"]').getAttribute('content');
       document.body.style.backgroundColor = themeColor;
-
-      // Redirect to the root URL on page load
-      if (window.location.pathname !== '/') {
-        window.location.replace('/');
-      }
     });
   </script>
 

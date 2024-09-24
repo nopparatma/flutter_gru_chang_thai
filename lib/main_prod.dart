@@ -12,7 +12,6 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:url_strategy/url_strategy.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +22,6 @@ Future<void> main() async {
 
   AppConfig.prod();
   setupGetIt();
-  setPathUrlStrategy();
 
   Logger.level = Level.all;
 

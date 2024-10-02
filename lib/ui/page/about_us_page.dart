@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gru_chang_thai/ui/desktop/about_us_page.dart';
 import 'package:flutter_gru_chang_thai/ui/mobile/about_us_page.dart';
-import 'package:flutter_gru_chang_thai/ui/widget/fade_animation_widget.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class AboutUsPage extends StatefulWidget {
@@ -14,9 +13,7 @@ class AboutUsPage extends StatefulWidget {
 class AboutUsPageState extends State<AboutUsPage> {
   @override
   Widget build(BuildContext context) {
-    return FadeAnimationWidget(
-      child: _buildMainContent(),
-    );
+    return _buildMainContent();
   }
 
   Widget _buildMainContent() {

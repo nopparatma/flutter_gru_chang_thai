@@ -124,7 +124,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
         children: [
           const Expanded(flex: 1, child: Offstage()),
           Expanded(
-            flex: 11,
+            flex: 21,
             child: Column(
               children: [
                 const Expanded(flex: 3, child: Offstage()),
@@ -247,7 +247,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Expanded(
-            flex: 11,
+            flex: 21,
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 2000),
               switchInCurve: Curves.easeIn,

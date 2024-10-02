@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gru_chang_thai/app/app_resource.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/custom_read_more_widget.dart';
-import 'package:flutter_gru_chang_thai/ui/widget/fade_animation_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/gold_gradient_text_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/header_widget.dart';
 import 'package:get/get.dart';
@@ -17,48 +16,46 @@ class DesktopAboutUsPage extends StatefulWidget {
 class DesktopAboutUsPageState extends State<DesktopAboutUsPage> {
   @override
   Widget build(BuildContext context) {
-    return FadeAnimationWidget(
-      child: Column(
-        children: [
-          HeaderWidget(
-            title: AppResource.aboutUs.tr,
-            fromPage: AppResource.home.tr,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 50),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                GoldGradientTextWidget(
-                  text: AppResource.aboutUs.tr,
-                  style: Theme.of(context).textTheme.xxLarger,
-                ),
-                const SizedBox(height: 40),
-                Row(
-                  children: [
-                    const Expanded(flex: 1, child: Offstage()),
-                    Expanded(
-                      flex: 10,
-                      child: Column(
-                        children: [
-                          for (int i = 0; i < 10; i++)
-                            Column(
-                              children: [
-                                _buildControlWidget(i),
-                                const SizedBox(height: 50),
-                              ],
-                            ),
-                        ],
-                      ),
+    return Column(
+      children: [
+        HeaderWidget(
+          title: AppResource.aboutUs.tr,
+          fromPage: AppResource.home.tr,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 50),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              GoldGradientTextWidget(
+                text: AppResource.aboutUs.tr,
+                style: Theme.of(context).textTheme.xxLarger,
+              ),
+              const SizedBox(height: 40),
+              Row(
+                children: [
+                  const Expanded(flex: 1, child: Offstage()),
+                  Expanded(
+                    flex: 10,
+                    child: Column(
+                      children: [
+                        for (int i = 0; i < 10; i++)
+                          Column(
+                            children: [
+                              _buildControlWidget(i),
+                              const SizedBox(height: 50),
+                            ],
+                          ),
+                      ],
                     ),
-                    const Expanded(flex: 1, child: Offstage()),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                  const Expanded(flex: 1, child: Offstage()),
+                ],
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
 
     // return CommonLayout(
@@ -115,10 +112,7 @@ class DesktopAboutUsPageState extends State<DesktopAboutUsPage> {
         children: [
           Text(
             'Contemporary Mission of “Royal Goldsmith”',
-            style: Theme.of(context)
-                .textTheme
-                .normal
-                .copyWith(fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.normal.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 26),
           CustomReadMoreTextWidget(
@@ -126,10 +120,7 @@ class DesktopAboutUsPageState extends State<DesktopAboutUsPage> {
             trimLines: 5,
             trimMode: TrimMode.Line,
             trimCollapsedText: 'Read more',
-            moreStyle: Theme.of(context)
-                .textTheme
-                .normal
-                .copyWith(fontWeight: FontWeight.bold),
+            moreStyle: Theme.of(context).textTheme.normal.copyWith(fontWeight: FontWeight.bold),
             isExpand: false,
             callback: (val) {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

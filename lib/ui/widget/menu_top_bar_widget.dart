@@ -78,7 +78,7 @@ class MenuTopBarWidgetState extends State<MenuTopBarWidget> {
         children: [
           const Expanded(flex: 1, child: Offstage()),
           Expanded(
-            flex: 10,
+            flex: 20,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -113,7 +113,7 @@ class MenuTopBarWidgetState extends State<MenuTopBarWidget> {
         children: [
           const Expanded(flex: 1, child: Offstage()),
           Expanded(
-            flex: 10,
+            flex: 20,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -162,7 +162,7 @@ class MenuTopBarWidgetState extends State<MenuTopBarWidget> {
         InkWell(
           child: _buildText(item),
           onTap: () {
-            Get.toNamed(item['route'] ?? AppConstant.emptyString);
+            Get.offNamed(item['route'] ?? AppConstant.emptyString);
           },
         ),
         const SizedBox(width: 30),
@@ -181,7 +181,7 @@ class MenuTopBarWidgetState extends State<MenuTopBarWidget> {
         InkWell(
           child: _buildText(item),
           onTap: () {
-            Get.toNamed(item['route'] ?? AppConstant.emptyString);
+            Get.offNamed(item['route'] ?? AppConstant.emptyString);
           },
         ),
         const Padding(

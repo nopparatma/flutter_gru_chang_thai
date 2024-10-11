@@ -32,7 +32,6 @@ class ApplicationState extends Equatable {
   }
 
   List<String> getConfigValues(String key) {
-    debugPrint('getConfigValues');
     return config?.getMasterData?.listMasterData?.where((element) => element.key == key).map((e) => e.data ?? '').toList() ?? [];
   }
 }

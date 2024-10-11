@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gru_chang_thai/ui/desktop/about_us_page.dart';
 import 'package:flutter_gru_chang_thai/ui/mobile/about_us_page.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:flutter_gru_chang_thai/ui/widget/responsive_widget.dart';
 
 class AboutUsPage extends StatefulWidget {
   const AboutUsPage({super.key});
@@ -13,14 +13,9 @@ class AboutUsPage extends StatefulWidget {
 class AboutUsPageState extends State<AboutUsPage> {
   @override
   Widget build(BuildContext context) {
-    return _buildMainContent();
-  }
-
-  Widget _buildMainContent() {
-    if (ResponsiveBreakpoints.of(context).isDesktop) {
-      return const DesktopAboutUsPage();
-    }
-
-    return const MobileAboutUsPage();
+    return const ResponsiveWidget(
+      desktop: DesktopAboutUsPage(),
+      mobile: MobileAboutUsPage(),
+    );
   }
 }

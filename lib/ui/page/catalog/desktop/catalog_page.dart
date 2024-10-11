@@ -6,14 +6,14 @@ import 'package:flutter_gru_chang_thai/ui/widget/gold_gradient_text_widget.dart'
 import 'package:flutter_gru_chang_thai/ui/widget/header_widget.dart';
 import 'package:get/get.dart';
 
-class CatalogPage extends StatefulWidget {
-  const CatalogPage({super.key});
+class DesktopCatalogPage extends StatefulWidget {
+  const DesktopCatalogPage({super.key});
 
   @override
-  CatalogPageState createState() => CatalogPageState();
+  DesktopCatalogPageState createState() => DesktopCatalogPageState();
 }
 
-class CatalogPageState extends State<CatalogPage> {
+class DesktopCatalogPageState extends State<DesktopCatalogPage> {
   List<Widget> listWidgets = const [
     GoldGradientBoxItemWidget(),
     GoldGradientBoxItemWidget(),
@@ -60,7 +60,7 @@ class CatalogPageState extends State<CatalogPage> {
             const Expanded(flex: 1, child: Offstage()),
             Expanded(
               flex: 20,
-              child: _buildDesktopView(),
+              child: _buildContentItemView(),
             ),
             const Expanded(flex: 1, child: Offstage()),
           ],
@@ -70,7 +70,7 @@ class CatalogPageState extends State<CatalogPage> {
     );
   }
 
-  Widget _buildDesktopView() {
+  Widget _buildContentItemView() {
     return SizedBox(
       height: 400,
       child: ListView.builder(

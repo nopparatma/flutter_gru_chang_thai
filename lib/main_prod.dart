@@ -23,7 +23,7 @@ Future<void> main() async {
   AppConfig.prod();
   setupGetIt();
 
-  Logger.level = Level.all;
+  Logger.level = Level.off;
 
   CatcherOptions catcherOptions = CatcherOptions(
     SilentReportMode(),

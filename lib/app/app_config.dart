@@ -27,8 +27,8 @@ class AppConfig {
   // Environment Flavor Config
   static AppConfig dev() {
     return AppConfig(
-      applicationName: 'GruChang Thai Gold Smith DEV',
-      gruChangThaiApiServerUrl: 'http://localhost:3000',
+      applicationName: '[DEV] GruChang Thai Gold Smith',
+      gruChangThaiApiServerUrl: 'https://36fe-167-235-243-206.ngrok-free.app',
     );
   }
 

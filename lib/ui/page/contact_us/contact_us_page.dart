@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gru_chang_thai/ui/desktop/contact_us_page.dart';
-import 'package:flutter_gru_chang_thai/ui/mobile/contact_us_page.dart';
+import 'package:flutter_gru_chang_thai/ui/page/contact_us/desktop/contact_us_page.dart';
+import 'package:flutter_gru_chang_thai/ui/page/contact_us/mobile/contact_us_page.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/responsive_widget.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 

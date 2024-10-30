@@ -1,6 +1,6 @@
-import 'package:flutter_gru_chang_thai/ui/page/about_us_page.dart';
+import 'package:flutter_gru_chang_thai/ui/page/about_us/about_us_page.dart';
 import 'package:flutter_gru_chang_thai/ui/page/catalog/catalog_page.dart';
-import 'package:flutter_gru_chang_thai/ui/page/contact_us_page.dart';
+import 'package:flutter_gru_chang_thai/ui/page/contact_us/contact_us_page.dart';
 import 'package:flutter_gru_chang_thai/ui/page/home_page.dart';
 import 'package:flutter_gru_chang_thai/ui/page/splash_page.dart';
 import 'package:get/get.dart';

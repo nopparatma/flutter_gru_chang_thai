@@ -27719,7 +27719,7 @@ case 2:n=$
 s=3
 return A.F(A.aUv($.aFq()),$async$a2w)
 case 3:n.acT=b
-$.aRF=new A.KX("GruChang Thai Gold Smith","https://36fe-167-235-243-206.ngrok-free.app")
+$.aRF=new A.KX("\u0e01\u0e23\u0e38\u0e0a\u0e48\u0e32\u0e07\u0e44\u0e17\u0e22","https://36fe-167-235-243-206.ngrok-free.app")
 A.b34()
 q=new A.a5y(A.b([A.aSy()],t.fR),5000,new A.RG(),B.Ia,B.Kl,B.Km,B.hm,null)
 p=t.N

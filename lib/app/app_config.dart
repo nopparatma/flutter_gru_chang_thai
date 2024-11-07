@@ -27,14 +27,14 @@ class AppConfig {
   // Environment Flavor Config
   static AppConfig dev() {
     return AppConfig(
-      applicationName: '[DEV] GruChang Thai Gold Smith',
+      applicationName: '[DEV] กรุช่างไทย',
       gruChangThaiApiServerUrl: 'https://36fe-167-235-243-206.ngrok-free.app',
     );
   }
 
   static AppConfig prod() {
     return AppConfig(
-      applicationName: 'GruChang Thai Gold Smith',
+      applicationName: 'กรุช่างไทย',
       gruChangThaiApiServerUrl: 'https://36fe-167-235-243-206.ngrok-free.app',
     );
   }

@@ -8,6 +8,7 @@ import 'package:flutter_gru_chang_thai/app/app_middleware.dart';
 import 'package:flutter_gru_chang_thai/core/bloc/application/application_bloc.dart';
 import 'package:flutter_gru_chang_thai/core/bloc/splash/splash_bloc.dart';
 import 'package:flutter_gru_chang_thai/core/service/translation_service.dart';
+import 'package:flutter_gru_chang_thai/ui/page/unknown/unknown_page.dart';
 import 'package:flutter_gru_chang_thai/ui/router.dart';
 import 'package:flutter_gru_chang_thai/shared/colors.dart';
 import 'package:flutter_gru_chang_thai/shared/ui_config.dart';
@@ -103,7 +104,7 @@ class MainWebState extends State<MainWeb> {
       ),
       navigatorObservers: [AppMiddleware()],
       defaultTransition: transitions_type.Transition.noTransition,
-      unknownRoute: WebGetXRouter.routes.first,
+      unknownRoute: GetPage(name: RoutePath.notFound, page: () => const UnknownPage()),
       getPages: WebGetXRouter.routes,
       navigatorKey: Catcher.navigatorKey,
       initialRoute: RoutePath.index,

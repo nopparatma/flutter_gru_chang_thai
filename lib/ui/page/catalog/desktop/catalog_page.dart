@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gru_chang_thai/app/app_resource.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
+import 'package:flutter_gru_chang_thai/ui/page/catalog/mock/mock_data.dart';
+import 'package:flutter_gru_chang_thai/ui/page/catalog/model/catalog_display_item.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/gold_gradient_box_item_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/gold_gradient_text_widget.dart';
 import 'package:flutter_gru_chang_thai/ui/widget/header_widget.dart';
@@ -14,14 +16,14 @@ class DesktopCatalogPage extends StatefulWidget {
 }
 
 class DesktopCatalogPageState extends State<DesktopCatalogPage> {
-  List<Widget> listWidgets = const [
-    GoldGradientBoxItemWidget(),
-    GoldGradientBoxItemWidget(),
-    GoldGradientBoxItemWidget(),
-    GoldGradientBoxItemWidget(),
-    GoldGradientBoxItemWidget(),
-    GoldGradientBoxItemWidget(),
-  ];
+  List<CatalogDisplayMainItem> catalogDisplays = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    catalogDisplays = mockCatalogDisplays;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,23 +37,22 @@ class DesktopCatalogPageState extends State<DesktopCatalogPage> {
           padding: const EdgeInsets.symmetric(vertical: 32),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              _buildContent('สร้อยคอทองโบราณ'),
-              _buildContent('สร้อยข้อมือทองโบราณ'),
-              _buildContent('กรอบพระทองโบราณ'),
-              _buildContent('จี้ทองโบราณ'),
-            ],
+            children: [..._buildContentList()],
           ),
         ),
       ],
     );
   }
 
-  Widget _buildContent(String title) {
+  List<Widget> _buildContentList() {
+    return List.generate(catalogDisplays.length, (index) => _buildContent(catalogDisplays[index]));
+  }
+
+  Widget _buildContent(CatalogDisplayMainItem mainItem) {
     return Column(
       children: [
         GoldGradientTextWidget(
-          text: title,
+          text: mainItem.title,
           style: Theme.of(context).textTheme.xxLarger,
         ),
         const SizedBox(height: 32),
@@ -60,7 +61,7 @@ class DesktopCatalogPageState extends State<DesktopCatalogPage> {
             const Expanded(flex: 1, child: Offstage()),
             Expanded(
               flex: 20,
-              child: _buildContentItemView(),
+              child: _buildContentItemView(mainItem.products),
             ),
             const Expanded(flex: 1, child: Offstage()),
           ],
@@ -70,16 +71,24 @@ class DesktopCatalogPageState extends State<DesktopCatalogPage> {
     );
   }
 
-  Widget _buildContentItemView() {
+  Widget _buildContentItemView(List<CatalogDisplayItem> listWidgets) {
     return SizedBox(
       height: 400,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: listWidgets.length,
-        prototypeItem: const SizedBox(width: 400),
-        itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.only(right: 16),
-          child: listWidgets[index],
+      child: Center(
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: listWidgets.length,
+          shrinkWrap: true,
+          prototypeItem: const SizedBox(width: 400),
+          itemBuilder: (context, index) {
+            final item = listWidgets[index];
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: GoldGradientBoxItemWidget(image: item.image, title: item.title),
+              ),
+            );
+          },
         ),
       ),
     );

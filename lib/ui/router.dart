@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_gru_chang_thai/ui/page/about_us/about_us_page.dart';
 import 'package:flutter_gru_chang_thai/ui/page/catalog/catalog_page.dart';
 import 'package:flutter_gru_chang_thai/ui/page/contact_us/contact_us_page.dart';
@@ -8,10 +10,11 @@ import 'common_layout.dart';
 
 class RoutePath {
   static const String index = '/';
+  static const String notFound = '/not-found';
   static const String homePage = '/home';
   static const String catalogPage = '/catalog';
-  static const String aboutUsPage = '/about_us';
-  static const String contactUsPage = '/contact_us';
+  static const String aboutUsPage = '/about-us';
+  static const String contactUsPage = '/contact-us';
   static const String splashPage = '/splash';
 }
 

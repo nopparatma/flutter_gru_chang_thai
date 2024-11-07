@@ -17,6 +17,11 @@ class CustomCarouselWidgetState extends State<CustomCarouselWidget> {
   final CarouselSliderController _controller = CarouselSliderController();
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return VisibilityDetector(
       key: widget.key ?? const Key('value'),

@@ -3,6 +3,7 @@ import 'package:flutter_gru_chang_thai/shared/theme.dart';
 import 'package:flutter_gru_chang_thai/utils/url_utils.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:responsive_framework/responsive_breakpoints.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'background_image_widget.dart';
 
@@ -251,7 +252,12 @@ class FooterWidgetState extends State<FooterWidget> {
         children: [
           IconButton(
             icon: Image.asset(socialItem.icon, height: 30),
-            onPressed: () async => await UrlUtils.launchURL(socialItem.url),
+            // onPressed: () async => await UrlUtils.launchURL(socialItem.url),
+            onPressed: () async {
+              const url = 'https://flutter.dev';
+              Uri urlParse = Uri.parse(url);
+              await launchUrl(urlParse);
+            },
           ),
         ],
       );

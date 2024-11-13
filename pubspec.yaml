@@ -3,7 +3,7 @@ description: "A new Flutter project."
 
 publish_to: 'none' 
 
-version: 1.0.0+31
+version: 1.0.0+32
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
@@ -43,7 +43,6 @@ dependencies:
   carousel_slider: 5.0.0
   visibility_detector: 0.4.0+2
   url_launcher: ^6.3.1
-  url_launcher_web: ^2.3.3
 
 dev_dependencies:
   flutter_test:

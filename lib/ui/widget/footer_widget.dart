@@ -251,7 +251,7 @@ class FooterWidgetState extends State<FooterWidget> {
         children: [
           IconButton(
             icon: Image.asset(socialItem.icon, height: 30),
-            onPressed: () => UrlUtils.launchURL(socialItem.url),
+            onPressed: () async => await UrlUtils.launchURL(socialItem.url),
           ),
         ],
       );

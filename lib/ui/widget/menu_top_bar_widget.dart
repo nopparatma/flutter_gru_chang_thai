@@ -22,12 +22,8 @@ class MenuTopBarWidgetState extends State<MenuTopBarWidget> {
   String currentPath = AppConstant.emptyString;
 
   final List<Map<String, String>> languageItems = [
-    {
-      'value': 'th',
-      'name': 'ไทย',
-      'icon': 'assets/images/icon_thai.png',
-    },
-    {'value': 'en', 'name': 'English', 'icon': 'assets/images/icon_english.png'},
+    {'value': 'th', 'name': 'ไทย', 'icon': 'assets/icons/icon_thai.png'},
+    {'value': 'en', 'name': 'English', 'icon': 'assets/icons/icon_english.png'},
   ];
 
   List<Map<String, String>> listMenus = [

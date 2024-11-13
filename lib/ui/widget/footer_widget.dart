@@ -94,6 +94,7 @@ class FooterWidgetState extends State<FooterWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              height,
               SizedBox(
                 height: 50,
                 child: Image.asset(
@@ -129,7 +130,8 @@ class FooterWidgetState extends State<FooterWidget> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: _buildSocialIcons(),
-              )
+              ),
+              height,
             ],
           ),
         ),
@@ -210,6 +212,7 @@ class FooterWidgetState extends State<FooterWidget> {
                         ],
                       ),
                     ),
+                    height,
                   ],
                 ),
               ),

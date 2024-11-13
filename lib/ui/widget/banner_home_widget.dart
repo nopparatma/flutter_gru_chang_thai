@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gru_chang_thai/core/bloc/application/application_bloc.dart';
 import 'package:flutter_gru_chang_thai/shared/colors.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
+import 'package:flutter_gru_chang_thai/ui/router.dart';
 import 'package:flutter_gru_chang_thai/utils/image_util.dart';
+import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'background_image_widget.dart';
@@ -34,7 +36,11 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
       setState(() => _index++);
     });
 
-    presenterValues = context.read<ApplicationBloc>().state.getConfigValues('IMAGE_PRESENTER');
+    final ApplicationState applicationState = context.read<ApplicationBloc>().state;
+    if (applicationState.config == null) {
+      Get.offAllNamed(RoutePath.splashPage);
+    }
+    presenterValues = applicationState.getConfigValues('IMAGE_PRESENTER');
   }
 
   @override

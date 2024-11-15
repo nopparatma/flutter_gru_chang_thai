@@ -28,7 +28,7 @@ class AppConfig {
   static AppConfig dev() {
     return AppConfig(
       applicationName: '[DEV] กรุช่างไทย',
-      gruChangThaiApiServerUrl: 'https://36fe-167-235-243-206.ngrok-free.app',
+      gruChangThaiApiServerUrl: 'http://localhost:6923',
     );
   }
 

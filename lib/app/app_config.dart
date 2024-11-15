@@ -35,7 +35,7 @@ class AppConfig {
   static AppConfig prod() {
     return AppConfig(
       applicationName: 'กรุช่างไทย',
-      gruChangThaiApiServerUrl: 'https://36fe-167-235-243-206.ngrok-free.app',
+      gruChangThaiApiServerUrl: 'https://api-gruchangthai.vercel.app',
     );
   }
 

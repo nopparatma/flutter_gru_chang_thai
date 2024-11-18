@@ -36,11 +36,11 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
       setState(() => _index++);
     });
 
-    final ApplicationState applicationState = context.read<ApplicationBloc>().state;
-    if (applicationState.config == null) {
-      Get.offAllNamed(RoutePath.splashPage);
-    }
-    presenterValues = applicationState.getConfigValues('IMAGE_PRESENTER');
+    // final ApplicationState applicationState = context.read<ApplicationBloc>().state;
+    // if (applicationState.config == null) {
+    //   Get.offAllNamed(RoutePath.splashPage);
+    // }
+    // presenterValues = applicationState.getConfigValues('IMAGE_PRESENTER');
   }
 
   @override

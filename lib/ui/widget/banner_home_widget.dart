@@ -289,7 +289,7 @@ class BannerHomeWidgetState extends State<BannerHomeWidget> {
 
   Widget _buildImage() {
     if (presenterValues.isNotEmpty) {
-      String image = ImageUtil.getForwardUrl(presenterValues[_index % presenterValues.length]);
+      String image = presenterValues[_index % presenterValues.length];
       return Image.network(image);
     }
 

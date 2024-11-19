@@ -7,7 +7,6 @@ import 'package:flutter_gru_chang_thai/app/app.dart';
 import 'package:flutter_gru_chang_thai/app/app_config.dart';
 import 'package:flutter_gru_chang_thai/core/get_it.dart';
 import 'package:flutter_gru_chang_thai/core/service/translation_service.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:logger/logger.dart';
 
 Future<void> main() async {
@@ -25,9 +24,7 @@ Future<void> main() async {
   );
 
   Catcher(
-    rootWidget: Phoenix(
-      child: const MainAppLocalization(),
-    ),
+    rootWidget: const MainAppLocalization(),
     debugConfig: catcherOptions,
     releaseConfig: catcherOptions,
     profileConfig: catcherOptions,

@@ -5,7 +5,6 @@ import 'package:flutter_gru_chang_thai/app/app_constant.dart';
 import 'package:flutter_gru_chang_thai/core/bloc/application/application_bloc.dart';
 import 'package:flutter_gru_chang_thai/shared/colors.dart';
 import 'package:flutter_gru_chang_thai/shared/theme.dart';
-import 'package:flutter_gru_chang_thai/utils/image_util.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'background_image_widget.dart';

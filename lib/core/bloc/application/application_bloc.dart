@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gru_chang_thai/core/models/get_master_data_rs.dart';
+import 'package:flutter_gru_chang_thai/core/models/get_master_config_rs.dart';
 
 part 'application_event.dart';
 

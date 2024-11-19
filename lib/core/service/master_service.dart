@@ -1,16 +1,17 @@
-import 'package:flutter_gru_chang_thai/core/models/get_master_data_rq.dart';
-import 'package:flutter_gru_chang_thai/core/models/get_master_data_rs.dart';
+import 'package:flutter_gru_chang_thai/core/models/get_master_config_rq.dart';
+import 'package:flutter_gru_chang_thai/core/models/get_master_config_rs.dart';
 
 import 'base_service.dart';
 
 class MasterService extends BaseService {
-  static const String controllerName = 'master';
+  static const String version = 'v1';
+  static const String controllerName = '$version/master';
 
-  Future<GetMasterDataRs> getMasterData(GetMasterDataRq rq) async {
+  Future<GetMasterConfigRs> getMasterConfig(GetMasterConfigRq rq) async {
     return await post(
-      getApiUrl(controllerName, 'getMasterData'),
+      getApiUrl(controllerName, 'getMasterConfig'),
       rq.toJson(),
-      (data) => GetMasterDataRs.fromJson(data),
+      (data) => GetMasterConfigRs.fromJson(data),
     );
   }
 }

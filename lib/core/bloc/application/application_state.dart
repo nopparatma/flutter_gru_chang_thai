@@ -1,11 +1,11 @@
 part of 'application_bloc.dart';
 
 class ApplicationState extends Equatable {
-  final GetMasterDataRs? config;
+  final GetMasterConfigRs? config;
 
   const ApplicationState({this.config});
 
-  ApplicationState copyWith({GetMasterDataRs? config}) {
+  ApplicationState copyWith({GetMasterConfigRs? config}) {
     return ApplicationState(config: config ?? this.config);
   }
 
@@ -20,7 +20,7 @@ class ApplicationState extends Equatable {
   // Deserialize from JSON
   factory ApplicationState.fromJson(Map<String, dynamic> json) {
     return ApplicationState(
-      config: json['config'] != null ? GetMasterDataRs.fromJson(json['config'] as Map<String, dynamic>) : null,
+      config: json['config'] != null ? GetMasterConfigRs.fromJson(json['config'] as Map<String, dynamic>) : null,
     );
   }
 
@@ -32,6 +32,6 @@ class ApplicationState extends Equatable {
   }
 
   List<String> getConfigValues(String key) {
-    return config?.getMasterData?.listMasterData?.where((element) => element.key == key).map((e) => e.data ?? '').toList() ?? [];
+    return config?.data?.masterConfigs?.where((element) => element.key == key).map((e) => e.value ?? '').toList() ?? [];
   }
 }

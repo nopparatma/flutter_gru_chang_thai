@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_master_data_rq.dart';
+part of 'get_master_config_rq.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-GetMasterDataRq _$GetMasterDataRqFromJson(Map<String, dynamic> json) =>
-    GetMasterDataRq();
+GetMasterConfigRq _$GetMasterConfigRqFromJson(Map<String, dynamic> json) =>
+    GetMasterConfigRq();
 
-Map<String, dynamic> _$GetMasterDataRqToJson(GetMasterDataRq instance) =>
+Map<String, dynamic> _$GetMasterConfigRqToJson(GetMasterConfigRq instance) =>
     <String, dynamic>{};

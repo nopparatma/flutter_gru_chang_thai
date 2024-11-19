@@ -26,6 +26,20 @@
       const themeColor = document.querySelector('meta[name="theme-color"]').getAttribute('content');
       document.body.style.backgroundColor = themeColor;
     });
+
+    // Detect if the page is refreshed
+    window.onload = function() {
+        if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+            // Redirect to root page if refresh is detected
+            window.location.href = '/';
+        }
+    };
+
+    // Prevent right-click on the entire document
+    document.addEventListener('contextmenu', function(event) {
+        event.preventDefault();  // This prevents the right-click menu
+        alert("Copyright 2024 gruchangthai.com All rights reserved. Do not copy files on the web.");
+    });
   </script>
 
 </head>

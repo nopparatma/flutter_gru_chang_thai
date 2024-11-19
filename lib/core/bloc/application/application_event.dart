@@ -3,7 +3,7 @@ part of 'application_bloc.dart';
 abstract class ApplicationEvent {}
 
 class ApplicationUpdateStateModelEvent extends ApplicationEvent {
-  final GetMasterDataRs? config;
+  final GetMasterConfigRs? config;
 
   ApplicationUpdateStateModelEvent({
     this.config,

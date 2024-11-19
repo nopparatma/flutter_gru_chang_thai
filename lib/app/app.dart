@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gru_chang_thai/app/app_middleware.dart';
 import 'package:flutter_gru_chang_thai/core/bloc/application/application_bloc.dart';
 import 'package:flutter_gru_chang_thai/core/bloc/splash/splash_bloc.dart';
 import 'package:flutter_gru_chang_thai/core/service/translation_service.dart';
@@ -102,7 +101,6 @@ class MainWebState extends State<MainWeb> {
           const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
         ],
       ),
-      navigatorObservers: [AppMiddleware()],
       defaultTransition: transitions_type.Transition.noTransition,
       unknownRoute: GetPage(name: RoutePath.notFound, page: () => const UnknownPage()),
       getPages: WebGetXRouter.routes,

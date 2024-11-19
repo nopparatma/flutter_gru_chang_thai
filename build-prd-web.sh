@@ -20,4 +20,5 @@ sed -i '' "s/^version: .*/version: $NEW_VERSION/" pubspec.yaml
 echo "Updated version from: $OLD_VERSION to: $NEW_VERSION"
 
 # Run the Flutter build command
-flutter build web --release --web-renderer canvaskit -t "lib/main_prod.dart" -v
+flutter build web --release --web-renderer html -t "lib/main_prod.dart" -v
+#flutter build web --release --web-renderer canvaskit -t "lib/main_prod.dart" -v

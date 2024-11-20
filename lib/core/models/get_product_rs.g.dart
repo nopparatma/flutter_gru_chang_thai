@@ -1,13 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_categories_rs.dart';
+part of 'get_product_rs.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-GetCategoriesRs _$GetCategoriesRsFromJson(Map<String, dynamic> json) =>
-    GetCategoriesRs(
+GetProductRs _$GetProductRsFromJson(Map<String, dynamic> json) => GetProductRs(
       data: json['data'] == null
           ? null
           : Data.fromJson(json['data'] as Map<String, dynamic>),
@@ -19,7 +18,7 @@ GetCategoriesRs _$GetCategoriesRsFromJson(Map<String, dynamic> json) =>
           : PaginationRs.fromJson(json['pagination'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$GetCategoriesRsToJson(GetCategoriesRs instance) =>
+Map<String, dynamic> _$GetProductRsToJson(GetProductRs instance) =>
     <String, dynamic>{
       'data': instance.data,
       'status': instance.status,
@@ -27,27 +26,31 @@ Map<String, dynamic> _$GetCategoriesRsToJson(GetCategoriesRs instance) =>
     };
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
-      categories: (json['categories'] as List<dynamic>?)
-          ?.map((e) => Category.fromJson(e as Map<String, dynamic>))
+      products: (json['products'] as List<dynamic>?)
+          ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
-      'categories': instance.categories,
+      'products': instance.products,
     };
 
-Category _$CategoryFromJson(Map<String, dynamic> json) => Category(
+Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       categoryId: json['categoryId'] as String?,
       image: json['image'] as String?,
-      seq: (json['seq'] as num?)?.toInt(),
+      sku: json['sku'] as String?,
       name: json['name'] == null
           ? null
           : BaseI18n.fromJson(json['name'] as Map<String, dynamic>),
+      description: json['description'] == null
+          ? null
+          : BaseI18n.fromJson(json['description'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
+Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'categoryId': instance.categoryId,
       'image': instance.image,
-      'seq': instance.seq,
+      'sku': instance.sku,
       'name': instance.name,
+      'description': instance.description,
     };

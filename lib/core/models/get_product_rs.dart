@@ -3,26 +3,32 @@ import 'package:flutter_gru_chang_thai/core/models/base/pagination_rs.dart';
 import 'package:flutter_gru_chang_thai/core/models/base/status_rs.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'get_categories_rs.g.dart';
+part 'get_product_rs.g.dart';
 
 @JsonSerializable()
-class GetCategoriesRs {
+class GetProductRs {
   Data? data;
   StatusRs? status;
   PaginationRs? pagination;
 
-  GetCategoriesRs({this.data, this.status, this.pagination});
+  GetProductRs({
+    this.data,
+    this.status,
+    this.pagination,
+  });
 
-  factory GetCategoriesRs.fromJson(Map<String, dynamic> json) => _$GetCategoriesRsFromJson(json);
+  factory GetProductRs.fromJson(Map<String, dynamic> json) => _$GetProductRsFromJson(json);
 
-  Map<String, dynamic> toJson() => _$GetCategoriesRsToJson(this);
+  Map<String, dynamic> toJson() => _$GetProductRsToJson(this);
 }
 
 @JsonSerializable()
 class Data {
-  List<Category>? categories;
+  List<Product>? products;
 
-  Data({this.categories});
+  Data({
+    this.products,
+  });
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
@@ -30,20 +36,22 @@ class Data {
 }
 
 @JsonSerializable()
-class Category {
+class Product {
   String? categoryId;
   String? image;
-  int? seq;
+  String? sku;
   BaseI18n? name;
+  BaseI18n? description;
 
-  Category({
+  Product({
     this.categoryId,
     this.image,
-    this.seq,
+    this.sku,
     this.name,
+    this.description,
   });
 
-  factory Category.fromJson(Map<String, dynamic> json) => _$CategoryFromJson(json);
+  factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CategoryToJson(this);
+  Map<String, dynamic> toJson() => _$ProductToJson(this);
 }
